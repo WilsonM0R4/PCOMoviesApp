@@ -1,5 +1,6 @@
 package com.example.pcomoviesapp.db.dao
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
@@ -10,5 +11,5 @@ interface UserDAO {
     @Insert
     fun insert(user:UserEntity)
     @Query("SELECT * FROM USERS WHERE USERS.SESSION_NAME = :sessionName")
-    fun getInfo(sessionName:String)
+    fun getInfo(sessionName:String): LiveData<List<UserEntity>>
 }
