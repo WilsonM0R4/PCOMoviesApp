@@ -3,7 +3,7 @@ package com.example.pcomoviesapp.db.entities
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
-import androidx.annotation.NonNull
+import com.example.pcomoviesapp.model.User
 
 @Entity(tableName = "USERS")
 data class UserEntity(
@@ -11,4 +11,9 @@ data class UserEntity(
     @ColumnInfo(name = "SESSION_NAME") var sessionName: String,
     @ColumnInfo(name = "NAME") var name: String,
     @ColumnInfo(name = "PASSWORD") var password: String
+)
+fun UserEntity.format() = User(
+    sessionName = sessionName,
+    name = name,
+    password = password
 )
