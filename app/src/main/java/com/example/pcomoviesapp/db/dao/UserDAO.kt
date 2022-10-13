@@ -11,5 +11,5 @@ interface UserDAO {
     @Insert
     fun insert(user:UserEntity)
     @Query("SELECT * FROM USERS WHERE USERS.SESSION_NAME = :sessionName")
-    fun getInfo(sessionName:String): List<UserEntity>
+    fun getInfo(sessionName:String): UserEntity
 }

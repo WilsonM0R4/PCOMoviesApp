@@ -1,54 +1,67 @@
 package com.example.pcomoviesapp.repository
 
-import android.app.Application
+import android.content.Context
 import com.example.pcomoviesapp.db.MoviesAppDB
 import com.example.pcomoviesapp.db.entities.format
-import com.example.pcomoviesapp.model.Movie
-import com.example.pcomoviesapp.model.User
-import com.example.pcomoviesapp.model.forPersistence
-import com.example.pcomoviesapp.model.toPersistence
+import com.example.pcomoviesapp.model.*
+import com.example.pcomoviesapp.network.MoviesApiClient
+import com.example.pcomoviesapp.network.ResponseCallback
+import java.lang.Exception
 
-class AppRepository(application: Application) {
+class AppRepository(private val context:Context) {
 
-    private val persistence = MoviesAppDB.getInstance(application)
+    private val persistence = MoviesAppDB.getInstance(context)
+    private val remote = MoviesApiClient()
 
-    fun registerUser(user:User) {
+    suspend fun registerUser(user:User) : Boolean{
         persistence.userDAO().insert(user.forPersistence())
-    }
-
-    fun getUser(sessionName:String) : List<User> {
-        return persistence.userDAO().getInfo(sessionName).map {
-            it.format()
+        return try {
+            getUser(user.sessionName).name == user.name
+        } catch (ex:Exception) {
+            ex.printStackTrace()
+            false
         }
     }
 
-    fun insertMovie(movie:Movie){
+    suspend fun getUser(sessionName:String) : User {
+        return persistence.userDAO().getInfo(sessionName).format()
+    }
+
+    suspend fun insertMovie(movie:Movie){
         persistence.moviesDAO().insert(movie.toPersistence())
     }
 
-    fun insertMovies(movies:List<Movie>) {
+    suspend fun insertMovies(movies:List<Movie>) {
         persistence.moviesDAO().insert(movies.map {
             it.toPersistence()
         })
     }
 
-    fun updateMovie(movie:Movie) {
+    suspend fun updateMovie(movie:Movie) {
         persistence.moviesDAO().update(movie.toPersistence())
     }
 
-    fun getAllMovies() : List<Movie> {
+    suspend fun getAllMovies() : List<Movie> {
         return persistence.moviesDAO().getAll().map {
             it.format()
         }
     }
 
-    fun getFavoriteMovies() : List<Movie> {
+    suspend fun getFavoriteMovies() : List<Movie> {
         return persistence.moviesDAO().getFavorites().map {
             it.format()
         }
     }
 
-    fun requestMovies() {
+    suspend fun requestMovies() {
+        remote.getLatestMovies(context, object:ResponseCallback {
+            override fun onSuccess(response:ApiResponse) {
 
+            }
+
+            override fun onFail(ex:Throwable){
+
+            }
+        })
     }
 }

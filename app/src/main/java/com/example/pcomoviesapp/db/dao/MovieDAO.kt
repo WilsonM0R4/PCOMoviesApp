@@ -1,6 +1,5 @@
 package com.example.pcomoviesapp.db.dao
 
-import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import com.example.pcomoviesapp.db.entities.MovieEntity
 

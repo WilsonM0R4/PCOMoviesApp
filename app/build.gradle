@@ -50,4 +50,14 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$rootProject.archLyfeCycleVersion"
     //noinspection LifecycleAnnotationProcessorWithJava8
     annotationProcessor("android.arch.lifecycle:compiler:$rootProject.archLyfeCycleVersion")
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.4'
+    //chucker
+    debugImplementation 'com.github.chuckerteam.chucker:library:3.5.2'
+
+    //Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
 }
