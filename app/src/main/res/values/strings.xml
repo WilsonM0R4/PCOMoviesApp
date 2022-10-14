@@ -9,4 +9,13 @@
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
     <string name="login">Login</string>
+    <string name="alert_success_button">Go to login</string>
+    <string name="alert_fail_button">Try again</string>
+    <string name="register_alert_success_title">Successful register</string>
+    <string name="register_alert_fail_title">Failed register</string>
+    <string name="register_alert_success_message">Registration process was successful</string>
+    <string name="register_alert_fail_message">There was a problem while saving your data. Try again or change your username.</string>
+    <string name="login_alert_failed_title">Wrong credentials</string>
+    <string name="login_alert_failed_user">The user was not found. Check it and try again.</string>
+    <string name="login_alert_failed_password">The password is wrong. Check it and try again.</string>
 </resources>

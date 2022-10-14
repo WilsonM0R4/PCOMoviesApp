@@ -14,8 +14,8 @@ class AppRepository(private val context:Context) {
     private val remote = MoviesApiClient()
 
     suspend fun registerUser(user:User) : Boolean{
-        persistence.userDAO().insert(user.forPersistence())
         return try {
+            persistence.userDAO().insert(user.forPersistence())
             getUser(user.sessionName).name == user.name
         } catch (ex:Exception) {
             ex.printStackTrace()

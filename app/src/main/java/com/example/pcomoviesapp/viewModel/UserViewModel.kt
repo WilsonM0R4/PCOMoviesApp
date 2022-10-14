@@ -17,11 +17,12 @@ class UserViewModel : ViewModel() {
     private var mUser = MutableLiveData<User>()
     private var mRegister = MutableLiveData<Boolean>()
     val user: LiveData<User> get() = mUser
+    val register : LiveData<Boolean> get() = mRegister
 
     fun getUser(context: Context, sessionName: String) {
         initRepository(context)
         CoroutineScope(Dispatchers.IO).launch {
-            mUser.value = repository?.getUser(sessionName)
+            mUser.postValue(repository?.getUser(sessionName))
         }
     }
 
@@ -29,7 +30,8 @@ class UserViewModel : ViewModel() {
         initRepository(context)
         CoroutineScope(Dispatchers.IO).launch {
             val user = User(sessionName = sessionName, name = name, password = password)
-            mRegister.value = repository?.registerUser(user)
+            val registered = repository?.registerUser(user)
+            mRegister.postValue(registered ?: false)
         }
     }
 
