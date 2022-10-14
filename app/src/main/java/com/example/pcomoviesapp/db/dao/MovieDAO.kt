@@ -1,6 +1,6 @@
 package com.example.pcomoviesapp.db.dao
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import com.example.pcomoviesapp.db.entities.MovieEntity
 
 @Dao

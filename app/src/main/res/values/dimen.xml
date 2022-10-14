@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="adjust_constraint_size">0dp</dimen>
+    <dimen name="title_size">18sp</dimen>
+    <dimen name="title_margin">16dp</dimen>
+    <dimen name="input_margin">8dp</dimen>
+    <dimen name="button_margin">16dp</dimen>
+</resources>

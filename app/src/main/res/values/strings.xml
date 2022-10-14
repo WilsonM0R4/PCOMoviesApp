@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">PCOMoviesApp</string>
+    <string name="register_title">Register</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="login_title">Welcome!</string>
+    <string name="session_name">Username</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="login">Login</string>
 </resources>

@@ -10,6 +10,6 @@ task clean(type: Delete) {
 }
 
 ext {
-    roomVersion = '1.1.1'
-    archLyfeCycleVersion  = '1.1.1'
+    roomVersion = '2.4.3'
+    navVersion = '2.5.2'
 }
