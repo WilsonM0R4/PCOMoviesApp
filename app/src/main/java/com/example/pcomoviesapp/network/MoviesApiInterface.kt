@@ -6,9 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MoviesApiInterface {
-    @GET("movie/latest")
-    suspend fun getLatestMovies(
-        @Query("api_key") apiKey: String,
-        @Query("language") language: String
+    @GET("movie/popular")
+    fun getPopularMovies(
+        @Query("api_key") apiKey: String
     ): Call<ApiResponse>
 }

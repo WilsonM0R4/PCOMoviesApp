@@ -18,4 +18,14 @@
     <string name="login_alert_failed_title">Wrong credentials</string>
     <string name="login_alert_failed_user">The user was not found. Check it and try again.</string>
     <string name="login_alert_failed_password">The password is wrong. Check it and try again.</string>
+    <string name="active_user">active_user</string>
+    <string name="poster_preview_content_description">Poster preview</string>
+    <string name="popular">Popular</string>
+    <string name="popular_original_title">Original title: %s</string>
+    <string name="popular_popularity">Popularity: %s</string>
+    <string name="popular_release_date">Release date: %s</string>
+    <string name="favorites">Favorites</string>
+    <string name="popular_empty_message">No movies received</string>
+    <string name="favorites_empty_message">There are no favorite movies</string>
+    <string name="understood">Understood</string>
 </resources>

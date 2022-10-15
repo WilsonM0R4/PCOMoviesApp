@@ -10,3 +10,11 @@ data class ApiResponse(
     @SerializedName("total_pages") var totalPages: Int = 0,
     @SerializedName("total_results") var totalResults: Int = 0
 )
+fun ApiResponse.format() = Response(
+    statusCode = statusCode,
+    statusMessage = statusMessage,
+    page = page,
+    results = results.map { it.format() },
+    totalPages = totalPages,
+    totalResults = totalResults
+)

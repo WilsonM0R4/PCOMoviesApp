@@ -53,14 +53,14 @@ class AppRepository(private val context:Context) {
         }
     }
 
-    suspend fun requestMovies() {
+    fun requestMovies(onSuccess:(Response)->Unit, onFail:(ex:Throwable)->Unit) {
         remote.getLatestMovies(context, object:ResponseCallback {
             override fun onSuccess(response:ApiResponse) {
-
+                onSuccess.invoke(response.format())
             }
 
             override fun onFail(ex:Throwable){
-
+                onFail.invoke(ex)
             }
         })
     }

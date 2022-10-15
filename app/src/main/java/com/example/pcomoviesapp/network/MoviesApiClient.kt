@@ -4,16 +4,12 @@ import android.content.Context
 import okhttp3.OkHttpClient
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.example.pcomoviesapp.common.Constants
 import com.example.pcomoviesapp.model.ApiResponse
-import com.example.pcomoviesapp.model.format
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MoviesApiClient {
-
-    private val imageMainPath = "https://image.tmdb.org/t/p/w500"
-    private val apiMainPath = "https://api.themoviedb.org/3/"
-    private val apiKey = "09963e300150f9831c46a1828a82a984"
 
     private fun getClient(context: Context): Retrofit {
         val okHttpClient = OkHttpClient.Builder().apply {
@@ -26,12 +22,12 @@ class MoviesApiClient {
                     .build()
             )
         }.build()
-        return Retrofit.Builder().baseUrl(apiMainPath)
+        return Retrofit.Builder().baseUrl(Constants.API_MAIN_PATH)
             .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build()
     }
 
-    suspend fun getLatestMovies(context: Context, responseCallback: ResponseCallback) {
-        getClient(context).create(MoviesApiInterface::class.java).getLatestMovies(apiKey, "en-US")
+    fun getLatestMovies(context: Context, responseCallback: ResponseCallback) {
+        getClient(context).create(MoviesApiInterface::class.java).getPopularMovies(Constants.API_KEY)
             .enqueue(
                 object : Callback<ApiResponse> {
                     override fun onResponse(
