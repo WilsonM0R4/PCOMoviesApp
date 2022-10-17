@@ -26,10 +26,10 @@ class LoginFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializeObserver()
-        sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        sharedPreferences = requireActivity().getSharedPreferences(getString(R.string.shared_session), Context.MODE_PRIVATE)
         val activeUser = sharedPreferences.getString(getString(R.string.active_user), "")
         if (activeUser != null && activeUser.isNotEmpty()) {
-            goToHome()
+            goToHome(activeUser)
         }
     }
 
@@ -63,7 +63,7 @@ class LoginFragment : Fragment() {
                 if (it.password == binding.etLoginPassword.text.toString()) {
                     sharedPreferences.edit()
                         .putString(getString(R.string.active_user), it.sessionName).apply()
-                    goToHome()
+                    goToHome(it.sessionName)
                 } else {
                     alert.apply {
                         setMessage(R.string.login_alert_failed_password)
@@ -83,8 +83,10 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun goToHome() {
-        startActivity(Intent(requireActivity(), HomeActivity::class.java))
+    private fun goToHome(activeUser:String) {
+        val intent = Intent(requireActivity(), HomeActivity::class.java)
+        intent.putExtra(getString(R.string.active_user), activeUser)
+        startActivity(intent)
         requireActivity().finish()
     }
 }

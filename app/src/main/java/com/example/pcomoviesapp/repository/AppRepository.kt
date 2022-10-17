@@ -27,8 +27,15 @@ class AppRepository(private val context:Context) {
         return persistence.userDAO().getInfo(sessionName).format()
     }
 
-    suspend fun insertMovie(movie:Movie){
-        persistence.moviesDAO().insert(movie.toPersistence())
+    suspend fun insertMovie(movie:Movie) : Boolean{
+        return try {
+            persistence.moviesDAO().insert(movie.toPersistence())
+            persistence.moviesDAO().getDetail(movie.id)
+            true
+        } catch (ex:Exception){
+            ex.printStackTrace()
+            false
+        }
     }
 
     suspend fun insertMovies(movies:List<Movie>) {
@@ -47,14 +54,27 @@ class AppRepository(private val context:Context) {
         }
     }
 
+    suspend fun getMovieDetail(id:Int) : Movie {
+        return persistence.moviesDAO().getDetail(id).format()
+    }
+
     suspend fun getFavoriteMovies() : List<Movie> {
         return persistence.moviesDAO().getFavorites().map {
             it.format()
         }
     }
 
-    fun requestMovies(onSuccess:(Response)->Unit, onFail:(ex:Throwable)->Unit) {
-        remote.getLatestMovies(context, object:ResponseCallback {
+    suspend fun deleteFavoriteMovie(movie:Movie) : Boolean {
+        return try {
+            persistence.moviesDAO().delete(movie.toPersistence())
+            persistence.moviesDAO().getDetail(movie.id).id != 0
+        } catch (ex:Exception) {
+            true
+        }
+    }
+
+    fun requestMovies(page:Int=1,onSuccess:(Response)->Unit, onFail:(ex:Throwable)->Unit) {
+        remote.getLatestMovies(context, page, object:ResponseCallback {
             override fun onSuccess(response:ApiResponse) {
                 onSuccess.invoke(response.format())
             }

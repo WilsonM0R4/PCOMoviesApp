@@ -16,11 +16,57 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <TextView
+        android:id="@+id/tvNoPopulars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/popular_empty_message"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/ivPrev"
+        android:layout_width="@dimen/logout_btn_size"
+        android:layout_height="@dimen/logout_btn_size"
+        android:layout_marginTop="@dimen/button_margin"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvPageIndex"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="contentDescription"/>
+
+    <TextView
+        android:id="@+id/tvPageIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/title"
+        android:textSize="@dimen/title_size"
+        app:layout_constraintTop_toTopOf="@id/ivPrev"
+        app:layout_constraintStart_toEndOf="@id/ivPrev"
+        app:layout_constraintEnd_toStartOf="@id/ivNext"
+        app:layout_constraintBottom_toBottomOf="@id/ivPrev"
+        tools:text="1"/>
+
+    <ImageView
+        android:id="@+id/ivNext"
+        android:layout_width="@dimen/logout_btn_size"
+        android:layout_height="@dimen/logout_btn_size"
+        android:layout_marginTop="@dimen/button_margin"
+        android:src="@drawable/ic_arrow_forward"
+        app:layout_constraintStart_toEndOf="@id/tvPageIndex"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="contentDescription"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPopularMovies"
         android:layout_width="@dimen/adjust_constraint_size"
         android:layout_height="@dimen/adjust_constraint_size"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/movie_item_top_bottom_margin"
+        app:layout_constraintTop_toBottomOf="@id/ivPrev"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />

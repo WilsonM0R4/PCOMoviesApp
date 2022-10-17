@@ -7,4 +7,13 @@
     <dimen name="button_margin">16dp</dimen>
     <dimen name="poster_preview_width">70dp</dimen>
     <dimen name="poster_preview_height">140dp</dimen>
+    <dimen name="favorite_btn_size">36dp</dimen>
+    <dimen name="movie_item_radius">4dp</dimen>
+    <dimen name="movie_item_elevation">4dp</dimen>
+    <dimen name="movie_item_top_bottom_margin">8dp</dimen>
+    <dimen name="movie_item_start_end_margin">16dp</dimen>
+    <dimen name="logout_btn_margin">16dp</dimen>
+    <dimen name="logout_btn_size">24dp</dimen>
+    <dimen name="toolbar_elevation">8dp</dimen>
+    <dimen name="bottom_detail_poster_width">200dp</dimen>
 </resources>

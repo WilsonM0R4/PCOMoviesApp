@@ -26,8 +26,8 @@ class MoviesApiClient {
             .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build()
     }
 
-    fun getLatestMovies(context: Context, responseCallback: ResponseCallback) {
-        getClient(context).create(MoviesApiInterface::class.java).getPopularMovies(Constants.API_KEY)
+    fun getLatestMovies(context: Context, page:Int, responseCallback: ResponseCallback) {
+        getClient(context).create(MoviesApiInterface::class.java).getPopularMovies(Constants.API_KEY, page)
             .enqueue(
                 object : Callback<ApiResponse> {
                     override fun onResponse(

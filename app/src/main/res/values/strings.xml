@@ -19,6 +19,7 @@
     <string name="login_alert_failed_user">The user was not found. Check it and try again.</string>
     <string name="login_alert_failed_password">The password is wrong. Check it and try again.</string>
     <string name="active_user">active_user</string>
+    <string name="shared_session">shared_session</string>
     <string name="poster_preview_content_description">Poster preview</string>
     <string name="popular">Popular</string>
     <string name="popular_original_title">Original title: %s</string>
@@ -28,4 +29,17 @@
     <string name="popular_empty_message">No movies received</string>
     <string name="favorites_empty_message">There are no favorite movies</string>
     <string name="understood">Understood</string>
+    <string name="home_welcome_user">Welcome</string>
+    <string name="movie_img_content_description">Movie poster</string>
+    <string name="dummy_movie_title">The Dummy movie</string>
+    <string name="dummy_movie_overview">This is a dummy overview about the dummy movie</string>
+    <string name="original_language">Original language: %1$s</string>
+    <string name="original_title">Original title: %1$s</string>
+    <string name="popularity">Popularity: %1$f</string>
+    <string name="release_date">Release date: %1$s</string>
+    <string name="vote_average">Vote average: %1$f</string>
+    <string name="no_remote_message">It was not possible to load the moves from the remote source</string>
+    <string name="btn_load_local">Load local data</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

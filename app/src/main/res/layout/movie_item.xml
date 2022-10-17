@@ -2,10 +2,15 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvMovieItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/button_margin"
-    app:cardCornerRadius="@dimen/cardview_default_radius">
+    android:layout_marginStart="@dimen/movie_item_start_end_margin"
+    android:layout_marginEnd="@dimen/movie_item_start_end_margin"
+    android:layout_marginBottom="@dimen/movie_item_top_bottom_margin"
+    android:layout_marginTop="@dimen/movie_item_top_bottom_margin"
+    app:cardCornerRadius="@dimen/movie_item_radius"
+    app:cardElevation="@dimen/movie_item_elevation">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,7 +37,17 @@
             android:textSize="@dimen/title_size"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivPosterPreview"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toStartOf="@id/ivItemFavorite"/>
+
+        <ImageView
+            android:id="@+id/ivItemFavorite"
+            android:layout_width="@dimen/favorite_btn_size"
+            android:layout_height="@dimen/favorite_btn_size"
+            android:src="@drawable/ic_favorites"
+            app:tint="@color/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="contentDescription"/>
 
         <TextView
             android:id="@+id/tvItemOriginalTitle"

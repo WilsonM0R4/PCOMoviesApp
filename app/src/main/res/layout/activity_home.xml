@@ -6,12 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".view.HomeActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbHome"
+        android:layout_width="@dimen/adjust_constraint_size"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:elevation="@dimen/toolbar_elevation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_welcome_user"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"
+            android:textColor="@color/title"/>
+
+        <ImageView
+            android:id="@+id/ivLogout"
+            android:layout_width="@dimen/logout_btn_size"
+            android:layout_height="@dimen/logout_btn_size"
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/logout_btn_margin"
+            android:src="@drawable/ic_logout"
+            app:tint="@color/title"
+            tools:ignore="contentDescription"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/homeFragmentContainer"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="@dimen/adjust_constraint_size"
         android:layout_height="@dimen/adjust_constraint_size"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/movie_item_top_bottom_margin"
+        app:layout_constraintTop_toBottomOf="@id/tbHome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/homeBottomNavigation"
